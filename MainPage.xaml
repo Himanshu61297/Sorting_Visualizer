@@ -1,0 +1,139 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:sorting"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Custom="using:Microsoft.Xaml.Interactivity" xmlns:Custom1="using:Microsoft.Xaml.Interactions.Core"
+    x:Class="sorting.MainPage"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <VisualStateManager.VisualStateGroups>            
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualState x:Name="Bubble">
+                    <VisualState.Setters>
+                        <Setter Target="selection.(UIElement.Opacity)" Value="0.25"/>
+                        <Setter Target="bubble.(UIElement.Opacity)" Value="0.5"/>
+                        <Setter Target="insertion.(UIElement.Opacity)" Value="0.25"/>
+                        <Setter Target="merge.(UIElement.Opacity)" Value="0.25"/>
+                        <Setter Target="quick.(UIElement.Opacity)" Value="0.25"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Selection">
+                    <VisualState.Setters>
+                        <Setter Target="selection.(UIElement.Opacity)" Value="0.5"/>
+                        <Setter Target="bubble.(UIElement.Opacity)" Value="0.25"/>
+                        <Setter Target="insertion.(UIElement.Opacity)" Value="0.25"/>
+                        <Setter Target="merge.(UIElement.Opacity)" Value="0.25"/>
+                        <Setter Target="quick.(UIElement.Opacity)" Value="0.25"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Insertion">
+                    <VisualState.Setters>
+                        <Setter Target="selection.(UIElement.Opacity)" Value="0.25"/>
+                        <Setter Target="bubble.(UIElement.Opacity)" Value="0.25"/>
+                        <Setter Target="insertion.(UIElement.Opacity)" Value="0.5"/>
+                        <Setter Target="merge.(UIElement.Opacity)" Value="0.25"/>
+                        <Setter Target="quick.(UIElement.Opacity)" Value="0.25"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Merge">
+                    <VisualState.Setters>
+                        <Setter Target="selection.(UIElement.Opacity)" Value="0.25"/>
+                        <Setter Target="bubble.(UIElement.Opacity)" Value="0.25"/>
+                        <Setter Target="insertion.(UIElement.Opacity)" Value="0.25"/>
+                        <Setter Target="merge.(UIElement.Opacity)" Value="0.5"/>
+                        <Setter Target="quick.(UIElement.Opacity)" Value="0.25"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Quick">
+                    <VisualState.Setters>
+                        <Setter Target="selection.(UIElement.Opacity)" Value="0.25"/>
+                        <Setter Target="bubble.(UIElement.Opacity)" Value="0.25"/>
+                        <Setter Target="insertion.(UIElement.Opacity)" Value="0.25"/>
+                        <Setter Target="merge.(UIElement.Opacity)" Value="0.25"/>
+                        <Setter Target="quick.(UIElement.Opacity)" Value="0.5"/>
+                    </VisualState.Setters>
+                </VisualState>                
+            </VisualStateGroup>            
+        </VisualStateManager.VisualStateGroups>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.Background>
+            <AcrylicBrush BackgroundSource="HostBackdrop" TintOpacity="0.5"/>
+        </Grid.Background>
+        <StackPanel Visibility="Visible" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,40,0,0" Padding="12,8,12,8" Background="#33FFFFFF">
+            <TextBlock Text="sorting" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Opacity="0.75" FontStyle="Italic"/>
+            <TextBlock Text="visualizer." TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Opacity="0.75" FontStyle="Italic" Margin="5,0,0,0"/>
+        </StackPanel>
+        <StackPanel VerticalAlignment="Center" Margin="20,0,0,0">
+            <Button x:Name="bubble" Click="bubble_Click" Content="BUBBLE" Style="{ThemeResource TextBlockButtonStyle}" FontSize="72" FontWeight="Bold" Foreground="White" Opacity="0.25" Padding="8,-13,8,0" Height="80">
+                <Custom:Interaction.Behaviors>
+                    <Custom1:EventTriggerBehavior EventName="Click">
+                        <Custom1:GoToStateAction StateName="Bubble"/>
+                    </Custom1:EventTriggerBehavior>
+                </Custom:Interaction.Behaviors>
+            </Button>
+            <Button x:Name="selection" Click="selection_Click" Content="SELECTION" Style="{ThemeResource TextBlockButtonStyle}" FontSize="72" FontWeight="Bold" Foreground="White" Opacity="0.25" Padding="8,-13,8,0" Height="80">
+                <Custom:Interaction.Behaviors>
+                    <Custom1:EventTriggerBehavior EventName="Click">
+                        <Custom1:GoToStateAction StateName="Selection"/>
+                    </Custom1:EventTriggerBehavior>
+                </Custom:Interaction.Behaviors>
+
+            </Button>
+            <Button x:Name="insertion" Click="insertion_Click"  Content="INSERTION" Style="{ThemeResource TextBlockButtonStyle}" FontSize="72" FontWeight="Bold" Foreground="White" Opacity="0.25" Padding="8,-13,8,0" Height="80">
+                <Custom:Interaction.Behaviors>
+                    <Custom1:EventTriggerBehavior EventName="Click">
+                        <Custom1:GoToStateAction StateName="Insertion"/>
+                    </Custom1:EventTriggerBehavior>
+                </Custom:Interaction.Behaviors>
+
+            </Button>
+            <Button x:Name="merge" Click="merge_Click" Content="MERGE" Style="{ThemeResource TextBlockButtonStyle}" FontSize="72" FontWeight="Bold" Foreground="White" Opacity="0.25" Padding="8,-13,8,0" Height="80">
+                <Custom:Interaction.Behaviors>
+                    <Custom1:EventTriggerBehavior EventName="Click">
+                        <Custom1:GoToStateAction StateName="Merge"/>
+                    </Custom1:EventTriggerBehavior>
+                </Custom:Interaction.Behaviors>
+            </Button>
+            <Button x:Name="quick" Click="quick_Click" Content="QUICK" Style="{ThemeResource TextBlockButtonStyle}" FontSize="72" FontWeight="Bold" Foreground="White" Opacity="0.25" Padding="8,-13,8,0" Height="80">
+                <Custom:Interaction.Behaviors>
+                    <Custom1:EventTriggerBehavior EventName="Click">
+                        <Custom1:GoToStateAction StateName="Quick"/>
+                    </Custom1:EventTriggerBehavior>
+                </Custom:Interaction.Behaviors>
+            </Button>
+        </StackPanel>
+        <StackPanel VerticalAlignment="Bottom" Margin="20,0,0,40" HorizontalAlignment="Left">
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,20" HorizontalAlignment="Left">
+                <StackPanel Background="#33FFFFFF" Orientation="Horizontal" Padding="12,8,12,8">
+                    <TextBlock Text="array size." TextWrapping="Wrap" FontStyle="Italic" VerticalAlignment="Center" Margin="0,-4,0,0"/>
+                    <Slider x:Name="arraySize" StepFrequency="5" ValueChanged="arraySize_ValueChanged" Padding="0,-4,0,0" Width="150" VerticalAlignment="Center" Height="25" Margin="10,0,0,0"/>
+                </StackPanel>
+                <StackPanel Background="#33FFFFFF" Orientation="Horizontal" Padding="12,8,12,8" Margin="10,0,0,0">
+                    <TextBlock Text="algorithm speed." TextWrapping="Wrap" FontStyle="Italic" VerticalAlignment="Center" Margin="0,-4,0,0"/>
+                    <Slider x:Name="algoSpeed" StepFrequency="1" ValueChanged="algoSpeed_ValueChanged" Padding="0,-4,0,0" Width="150" VerticalAlignment="Center" Height="25" Margin="10,0,0,0"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <Button x:Name="startBtn" Click="startBtn_Click" Content="start algorithm." FontStyle="Italic" Background="{ThemeResource SystemAccentColor}">
+                   
+                </Button>
+                <Button x:Name="stopBtn" Click="stopBtn_Click" Content="stop algorithm." FontStyle="Italic" Background="#FFD70000" Visibility="Collapsed">
+                    
+                </Button>
+                <Button x:Name="resetBtn" Click="resetBtn_Click" Content="reset array." FontStyle="Italic" Margin="10,0,0,0"/>
+                <Button x:Name="createBtn" Click="createBtn_Click" Content="create new array." FontStyle="Italic" Margin="10,0,0,0"/>
+            </StackPanel>
+        </StackPanel>
+        <Grid Grid.Column="1" Background="#33FFFFFF">
+            <StackPanel x:Name="itemsPanel" VerticalAlignment="Bottom"/>
+        </Grid>
+
+    </Grid>
+</Page>
